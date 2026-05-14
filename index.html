@@ -133,6 +133,16 @@
   .edu-inst{font-size:.75rem;color:rgba(245,240,232,.5);margin-bottom:.5rem}
   .edu-detail{font-size:.72rem;line-height:1.8;color:rgba(245,240,232,.4);max-width:520px}
 
+  /* LEARNING / UPSKILLING */
+  #learning{background:#0a0a14}
+  .learning-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+  .learning-card{background:#1a1a2e;border:1px solid rgba(200,255,0,.15);padding:1.75rem;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+  .learning-card:hover{border-color:rgba(200,255,0,.25);transform:translateY(-3px)}
+  .learning-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--c)}
+  .learning-topic{font-family:'Unbounded',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.75rem;color:var(--paper);letter-spacing:-.01em}
+  .learning-desc{font-size:.75rem;line-height:1.8;color:rgba(245,240,232,.55);margin-bottom:1rem}
+  .learning-focus{font-size:.7rem;color:var(--c);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+
   /* TASKS / EXPERIENCE */
   #tasks{background:#0c0c0c}
   .task-board{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
@@ -284,9 +294,16 @@
   <div class="task-board" id="taskBoard"></div>
 </section>
 
+<!-- LEARNING / UPSKILLING -->
+<section id="learning">
+  <div class="section-label">09 — Learning</div>
+  <h2 class="section-title">Upskilling &amp; <em>Growth</em></h2>
+  <div class="learning-grid" id="learningGrid"></div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label">09 — Contact</div>
+  <div class="section-label">10 — Contact</div>
   <h2 class="section-title">Let's <em>Build</em> Together</h2>
   <div class="contact-grid">
     <div>
@@ -417,6 +434,19 @@ edus.forEach(e=>{
     <div class="edu-degree">${e.degree}</div>
     <div class="edu-inst">${e.inst}</div>
     <div class="edu-detail">${e.detail}</div>
+  </div>`;
+});
+
+const learnings=[
+  {topic:'Machine Learning for AMR Genes Prediction',desc:'Developing predictive models to identify antimicrobial resistance (AMR) genes in pathogenic bacterial genomes using deep learning and genomic sequence analysis. Exploring neural networks for rapid pathogen profiling and resistance pattern recognition.',focus:'Focus: ML, Genomics, Bacterial Pathogenesis',c:'#00cfff'},
+];
+
+const lg=document.getElementById('learningGrid');
+learnings.forEach(l=>{
+  lg.innerHTML+=`<div class="learning-card" style="--c:${l.c}">
+    <div class="learning-topic">${l.topic}</div>
+    <div class="learning-desc">${l.desc}</div>
+    <div class="learning-focus">${l.focus}</div>
   </div>`;
 });
 
